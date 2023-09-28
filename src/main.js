@@ -1,9 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from './routers/index'
+import store from './store'
 
 //Dependencias de firebase
 import {initializeApp} from 'firebase/app'
-import { getAuth } from 'firebase/auth'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -15,10 +16,6 @@ const firebaseConfig = {
     appId: "1:1020378740420:web:5dc37d0833c2acd67c3b91"
   };
   
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-  
-//initialize firebase auth
-const auth = getAuth()
+initializeApp(firebaseConfig);
 
-createApp(App).mount('#app')
+createApp(App).use(store).use(router).mount('#app')
